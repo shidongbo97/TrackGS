@@ -68,6 +68,7 @@
             object-fit: contain;
         }
     </style>
+
 </head>
 <body>
 
@@ -169,6 +170,41 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <!-- teaser. -->
+            <!--<div class="scroll-container">
+                <div class="scroll-item">
+                    <a> <img src="static/images/teaser-1.png" /> </a>
+                </div>
+                <div class="scroll-item">
+                    <a> <img src="static/images/teaser-1.png" /> </a>
+                </div>
+                <div class="scroll-item">
+                    <a> <img src="static/images/teaser-1.png" /> </a>
+                </div>
+                <div class="scroll-item">
+                    <a> <img src="static/images/teaser-1.png" /> </a>
+                </div>
+            </div>-->
+            <div class="column is-full-width">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <a> <img src="static/images/scgs-teaser-v3.png" /> </a>
+                    </div>
+                    <!--<div class="column has-text-centered">
+                        <a> <img src="static/images/teaser-2.png" /> </a>
+                    </div>
+                    <div class="column has-text-centered">
+                        <a> <img src="static/images/teaser-3.png" /> </a>
+                    </div>
+                    <div class="column has-text-centered">
+                        <a> <img src="static/images/teaser-4.png" /> </a>
+                    </div>-->
+                </div>
+            </div>
         </div>
     </section>
 
@@ -188,18 +224,6 @@
                     </div>
                 </div>
             </div>
-            <!--/ Abstract. -->
-            <!-- <div class="container is-max-desktop">
-                <div class="columns is-centered">
-                  <div class="column is-four-fifths">
-                      <img src="static/images/teaser.jpg" alt="Teaser image."/>
-                      <h2 class="subtitle has-text-justified">
-                        Groma is a multimodal large language model with exceptional region understanding and visual grounding capabilities.
-                        It can take user-defined region inputs (boxes) as well as generate long-form responses that are grounded to visual context.
-                      </h2>
-                  </div>
-                </div>
-            </div> -->
         </div>
     </section>
 
@@ -210,7 +234,7 @@
 
     <section class="hero teaser">
         <div class="container is-max-desktop">
-            <!-- Abstract. -->
+            <!-- Method. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Method</h2>
@@ -223,9 +247,9 @@
                         </p>
                         <p>
                             First, as a theoretical support, we derive the gradients of the camera intrinsic parameters, allowing the intrinsics to be updated during the training back-propagation process.
-                            In addition, we incorporate global track information for the images and select the Gaussian kernels associated with the track points. 
-                            We use reprojection loss to further constrain the parameters of 3DGS and camera, through multi-view geometric consistency. 
-                            To incorporate the computation of the reprojection errors without affecting the original role of remaining 3D Gaussians, we require that the tracked Gaussians are automatically scaled to an infinitely small size, distributed near the actual surface of the scene. 
+                            In addition, we incorporate global track information for the images and select the Gaussian kernels associated with the track points.
+                            We use reprojection loss to further constrain the parameters of 3DGS and camera, through multi-view geometric consistency.
+                            To incorporate the computation of the reprojection errors without affecting the original role of remaining 3D Gaussians, we require that the tracked Gaussians are automatically scaled to an infinitely small size, distributed near the actual surface of the scene.
                             Next, we propose an efficient joint optimization scheme for training.
                         </p>
                     </div>
@@ -238,8 +262,109 @@
     <br>
     <br>
 
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <!--Overview Video-->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Video</h2>
+                    <iframe src="video-link#"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <br>
+    <br>
 
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <!--results-->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Comparisons vs CF-3DGS</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We compare with CF-3DGS on Tanks and Temples and CO3D V2 datasets.
+                            The novel view synthesis results and corresponding depth maps are shown below.
+                        </p>
+                    </div>
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-full-width">
+                            <div class="columns is-centered">
+                                <div class="column has-text-centered">
+                                    <video id="dollyzoom" autoplay controls muted loop height="100%">
+                                        <source src="static/videos/Ignatius.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="column has-text-centered">
+                                    <video id="dollyzoom" autoplay controls muted loop height="100%">
+                                        <source src="static/videos/co3dv2-415.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content has-text-justified">
+                        <p>
+                            <a href="fig-table-cf3dgs">Table</a> shows the quantitative comparisons of novel view synthesis and pose accuracy of our method with baselines.
+                        </p>
+                    </div>
+                    <a name="fig-table-cf3dgs"> <img src="static/images/table-cf3dgs.png" /> </a>
+                    <figcaption>Figure: Quantitative comparisons of novel view synthesis and pose accuracy on T&T and CO3D V2.</figcaption>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <br>
+    <br>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <!--results-->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Synthetic Dataset</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            We also create a \( Synthetic Dataset \) with 4 scenes to test our method's ability on camera intrinsic and extrinsic.
+                            The novel view synthesis results and corresponding depth maps are shown below.
+                            <a href="fig-table-syn">Table</a> hows the estimation errors from CF-3DGS, COLMAP, and our approach.
+                        </p>
+                    </div>
+                    <div class="columns is-centered has-text-centered">
+                        <div class="column is-full-width">
+                            <div class="columns is-centered">
+                                <div class="column has-text-centered">
+                                    <video id="dollyzoom" autoplay controls muted loop height="100%">
+                                        <source src="static/videos/scene_02_living_room.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="column has-text-centered">
+                                    <video id="dollyzoom" autoplay controls muted loop height="100%">
+                                        <source src="static/videos/scene_06_bedroom.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="column has-text-centered">
+                                    <video id="dollyzoom" autoplay controls muted loop height="100%">
+                                        <source src="static/videos/scene_11_classroom.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="column has-text-centered">
+                                    <video id="dollyzoom" autoplay controls muted loop height="100%">
+                                        <source src="static/videos/scene_lego_c2.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a name="fig-table-syn"> <img src="static/images/synthetic-table.png" /> </a>
+                    <figcaption>Figure: Quantitative comparisons of parameter accuracy on our Synthetic dataset.</figcaption>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!--<section class="section" id="BibTeX">
             <div class="container is-max-desktop content">
