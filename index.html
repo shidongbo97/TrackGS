@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+          content="NoParam-3DGS">
+    <meta name="keywords" content="3DGS, Pose estimation">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        No Parameters, No Problem: 3D Gaussian Splatting without Camera Intrinsics and Extrinsics
+    </title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--  <link rel="icon" href="./static/images/favicon.svg">-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .scroll-container {
+            white-space: nowrap; /* 确保子元素不会换行 */
+            overflow-x: scroll; /* 允许水平方向上的滚动 */
+            overflow-y: hidden; /* 隐藏垂直方向上的滚动条 */
+        }
+
+        .scroll-item {
+            display: inline-block; /* 将子元素设置为行内块级元素 */
+        }
+    </style>
+    <style>
+        .video-container {
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">No Parameters, No Problem: <br>3D Gaussian Splatting without Camera Intrinsics and Extrinsics</h1>
+                        <div class="is-size-3 publication-authors">
+                            <span class="author-block">CVPR 2025</span>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Dongbo Shi</a><sup>1&dagger;</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block">Shen Cao</a><sup>2&dagger;</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><a href="https://lubinfan.github.io/">Lubin Fan</a><sup>2&ddagger;</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><a href="https://scholar.google.com.eg/citations?user=pdx6Lg8AAAAJ">Bojian Wu</a><sup>2</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block">Jinhui Guo</a><sup>2&dagger;</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><a href="http://staff.ustc.edu.cn/~renjiec/">Renjie Chen</a><sup>1&ddagger;</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><a href="http://staff.ustc.edu.cn/~lgliu/">Ligang Liu</a><sup>1</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><a href="https://scholar.google.com.eg/citations?user=T9AzhwcAAAAJ">Jieping Ye</a><sup>2</sup>&nbsp&nbsp&nbsp</span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block"><sup>1</sup>University of Science and Technology of China &nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><sup>2</sup>Individual Researcher &nbsp&nbsp&nbsp</span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>&dagger;</sup>Equal contributions.</span>
+                        </div>
+
+                        <div class="is-size-6 publication-authors">
+                            <span class="author-block"><sup>&ddagger;</sup>Corresponding authors.</span>
+                        </div>
+
+
+                        <div class="column has-text-centered">
+                            <!--            <div class="publication-links">-->
+                            <!--               PDF Link.-->
+                            <!--              <span class="link-block">-->
+                            <!--                <a href=""-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="fas fa-file-pdf"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Paper</span>-->
+                            <!--                </a>-->
+                            <!--              </span>-->
+                            <span class="link-block">
+                                <a href="arxiv-link#"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="ai ai-arxiv"></i>
+                                    </span>
+                                    <span>Arxiv</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="dataset-link#"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-file-archive-o"></i>
+                                    </span>
+                                    <span>DataSets</span>
+                                </a>
+                            </span>
+                            <!-- Video Link. -->
+                            <!--              <span class="link-block">-->
+                            <!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
+                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
+                            <!--                  <span class="icon">-->
+                            <!--                      <i class="fab fa-youtube"></i>-->
+                            <!--                  </span>-->
+                            <!--                  <span>Video</span>-->
+                            <!--                </a>-->
+                            <!--              </span>-->
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="index.html#"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code (Comming Soon)</span>
+                                </a>
+                            </span>
+                            <!-- Huggingface Link. -->
+                            <!-- <span class="link-block">
+                              <a href=""
+                                 class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">&#129303</span>
+                                <span>Demo (Comming Soon)</span>
+                              </a>
+                            </span> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            While 3D Gaussian Splatting (3DGS) has made significant progress in scene reconstruction and novel view synthesis, it still heavily relies on accurately pre-computed camera intrinsics and extrinsics, such as focal length and camera poses. In order to mitigate this dependency, the previous efforts have focused on optimizing 3DGS without the need for camera poses, yet camera intrinsics remain necessary. To further loose the requirement, we propose a joint optimization method to train 3DGS from an image collection without requiring either camera intrinsics or extrinsics.
+                            To achieve this goal, we introduce several key improvements during the joint training of 3DGS. We theoretically derive the gradient of the camera intrinsics, allowing the camera intrinsics to be optimized simultaneously during training.
+                            Moreover, we integrate global track information and select the Gaussian kernels associated with each track, which will be trained and automatically rescaled to an infinitesimally small size, closely approximating surface points, and focusing on enforcing multi-view consistency and minimizing reprojection errors, while the remaining kernels continue to serve their original roles. This hybrid training strategy nicely unifies the camera parameters estimation and 3DGS training.
+                            Extensive evaluations demonstrate that the proposed method achieves state-of-the-art (SOTA) performance on both public and synthetic datasets.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+            <!-- <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                  <div class="column is-four-fifths">
+                      <img src="static/images/teaser.jpg" alt="Teaser image."/>
+                      <h2 class="subtitle has-text-justified">
+                        Groma is a multimodal large language model with exceptional region understanding and visual grounding capabilities.
+                        It can take user-defined region inputs (boxes) as well as generate long-form responses that are grounded to visual context.
+                      </h2>
+                  </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+
+    <br>
+    <br>
+
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Method</h2>
+                    <a name="fig-pipline"> <img src="static/images/overview.png" /> </a>
+                    <figcaption>Figure: Pipeline.</figcaption>
+                    <div class="content has-text-justified">
+                        <p>
+                            Given a set of images \(\mathcal{I}=\{I_{i}\}_{i=1}^{M}\), the extrinsic matrix for each image \(I_{i}\) and the intrinsic matrix are denoted by \(T_{cw,i}\) and \(K\), respectively. Our method aims to simultaneously obtain both camera intrinsics and extrinsics, as well as a 3DGS model, as demonstrated in <a href="fig-pipline">figure</a>.
+                            Due to the incorporation of additional variables, i.e., camera parameters, we enhance the original 3DGS with several key designs.
+                        </p>
+                        <p>
+                            First, as a theoretical support, we derive the gradients of the camera intrinsic parameters, allowing the intrinsics to be updated during the training back-propagation process.
+                            In addition, we incorporate global track information for the images and select the Gaussian kernels associated with the track points. 
+                            We use reprojection loss to further constrain the parameters of 3DGS and camera, through multi-view geometric consistency. 
+                            To incorporate the computation of the reprojection errors without affecting the original role of remaining 3D Gaussians, we require that the tracked Gaussians are automatically scaled to an infinitely small size, distributed near the actual surface of the scene. 
+                            Next, we propose an efficient joint optimization scheme for training.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <br>
+    <br>
+
+
+
+
+    <!--<section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">BibTeX</h2>
+                <pre><code>@InProceedings{lin2024posemap,
+        author = {Jingyu Lin, Jiaqi Gu, Bojian Wu, Lubin Fan, Renjie Chen, Ligang Liu, Jieping Ye},
+        title = {Learning Neural Volumetric Pose Features for Camera Localization},
+        booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
+        year = {2024}
+    }</code></pre>
+            </div>
+        </section>-->
+
+
+
+</body>
+</html>
