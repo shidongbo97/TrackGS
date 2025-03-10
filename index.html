@@ -7,7 +7,7 @@
     <meta name="keywords" content="3DGS, Pose estimation">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
-        No Parameters, No Problem: 3D Gaussian Splatting without Camera Intrinsics and Extrinsics
+        TrackGS: Optimizing COLMAP-Free 3D Gaussian Splatting with Global Track Constraints
     </title>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -77,9 +77,9 @@
             <div class="container is-max-desktop">
                 <div class="columns is-centered">
                     <div class="column has-text-centered">
-                        <h1 class="title is-2 publication-title">No Parameters, No Problem: <br>3D Gaussian Splatting without Camera Intrinsics and Extrinsics</h1>
+                        <h1 class="title is-2 publication-title">TrackGS: Optimizing COLMAP-Free 3D Gaussian Splatting with Global Track Constraints</h1>
                         <div class="is-size-3 publication-authors">
-                            <span class="author-block">CVPR 2025</span>
+                            <span class="author-block">arXiv 2025</span>
                         </div>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">Dongbo Shi</a><sup>1&dagger;</sup>,&nbsp&nbsp&nbsp</span>
@@ -94,7 +94,7 @@
 
                         <div class="is-size-5 publication-authors">
                             <span class="author-block"><sup>1</sup>University of Science and Technology of China &nbsp&nbsp&nbsp</span>
-                            <span class="author-block"><sup>2</sup>Individual Researcher &nbsp&nbsp&nbsp</span>
+                            <span class="author-block"><sup>2</sup>Independent Researcher &nbsp&nbsp&nbsp</span>
                         </div>
 
                         <div class="is-size-6 publication-authors">
@@ -216,10 +216,12 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            While 3D Gaussian Splatting (3DGS) has made significant progress in scene reconstruction and novel view synthesis, it still heavily relies on accurately pre-computed camera intrinsics and extrinsics, such as focal length and camera poses. In order to mitigate this dependency, the previous efforts have focused on optimizing 3DGS without the need for camera poses, yet camera intrinsics remain necessary. To further loose the requirement, we propose a joint optimization method to train 3DGS from an image collection without requiring either camera intrinsics or extrinsics.
-                            To achieve this goal, we introduce several key improvements during the joint training of 3DGS. We theoretically derive the gradient of the camera intrinsics, allowing the camera intrinsics to be optimized simultaneously during training.
-                            Moreover, we integrate global track information and select the Gaussian kernels associated with each track, which will be trained and automatically rescaled to an infinitesimally small size, closely approximating surface points, and focusing on enforcing multi-view consistency and minimizing reprojection errors, while the remaining kernels continue to serve their original roles. This hybrid training strategy nicely unifies the camera parameters estimation and 3DGS training.
-                            Extensive evaluations demonstrate that the proposed method achieves state-of-the-art (SOTA) performance on both public and synthetic datasets.
+                        While 3D Gaussian Splatting (3DGS) has advanced ability on novel view synthesis, it still depends on accurate pre-computaed camera parameters, which are hard to obtain and prone to noise.
+                            Previous COLMAP-Free methods optimize camera poses using local constraints, but they often struggle in complex scenarios.
+                            To address this, we introduce TrackGS, which incorporates feature tracks to globally constrain multi-view geometry.
+                            We select the Gaussians associated with each track, which will be trained and rescaled to an infinitesimally small size to guarantee the spatial accuracy.
+                            We also propose minimizing both reprojection and backprojection errors for better geometric consistency.
+                            Moreover, by deriving the gradient of intrinsics, we unify camera parameter estimation with 3DGS training into a joint optimization framework, achieving SOTA performance on challenging datasets with severe camera movements.
                         </p>
                     </div>
                 </div>
@@ -238,7 +240,7 @@
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Method</h2>
-                    <a name="fig-pipline"> <img src="static/images/overview.png" /> </a>
+                    <a name="fig-pipline"> <img src="static/images/overview-v7.png" /> </a>
                     <figcaption>Figure: Pipeline.</figcaption>
                     <div class="content has-text-justified">
                         <p>
@@ -246,11 +248,14 @@
                             Due to the incorporation of additional variables, i.e., camera parameters, we enhance the original 3DGS with several key designs.
                         </p>
                         <p>
-                            First, as a theoretical support, we derive the gradients of the camera intrinsic parameters, allowing the intrinsics to be updated during the training back-propagation process.
-                            In addition, we incorporate global track information for the images and select the Gaussian kernels associated with the track points.
-                            We use reprojection loss to further constrain the parameters of 3DGS and camera, through multi-view geometric consistency.
-                            To incorporate the computation of the reprojection errors without affecting the original role of remaining 3D Gaussians, we require that the tracked Gaussians are automatically scaled to an infinitely small size, distributed near the actual surface of the scene.
-                            Next, we propose an efficient joint optimization scheme for training.
+                            Our key approach is to leverage the global track constraint to explicitly capture and enforce multi-view geometric consistency, which serves as the foundation for accurately estimating both the 3DGS model and the camera parameters.
+                            During initialization, we construct Maximum Spanning Tree (Sec.~\ref{subsec:init}) based on 2D matched feature points and extract global tracks.
+                            Then we initialize both the camera parameters and subsequent 3D Gaussians with the estimated 3D track points.
+                            Building on this, we propose an effective joint optimization method with three loss terms: 2D track loss, 3D track loss, and scale loss.
+                            The 2D and 3D track losses are minimized to ensure multi-view geometric consistency.
+                            The scale loss constrains the track Gaussians remain aligned with the scene's surface while preserving the expressive capability of the 3DGS model.
+                            We derive and implement the differentiable components of the camera parameters, including both the extrinsic and intrinsic matrices.
+                            This allows us to apply the chain rule, enabling seamless joint optimization of the 3DGS model and the camera parameters.
                         </p>
                     </div>
                 </div>
