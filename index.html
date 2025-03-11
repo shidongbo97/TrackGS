@@ -23,7 +23,7 @@
 
         gtag('config', 'G-PYVRSFMDRL');
     </script>
-
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
           rel="stylesheet">
 
@@ -38,7 +38,7 @@
     <!--  <link rel="icon" href="./static/images/favicon.svg">-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <!--<script defer src="static/js/fontawesome.all.min.js"></script>-->
     <script src="static/js/bulma-carousel.min.js"></script>
     <script src="static/js/bulma-slider.min.js"></script>
     <script src="static/js/index.js"></script>
@@ -131,39 +131,49 @@
                                 <a href="dataset-link#"
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
-                                        <i class="fab fa-file-archive-o"></i>
+                                        <i class="fa fa-file-archive-o"></i>
                                     </span>
                                     <span>DataSets</span>
                                 </a>
                             </span>
                             <!-- Video Link. -->
-                            <!--              <span class="link-block">-->
-                            <!--                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"-->
-                            <!--                   class="external-link button is-normal is-rounded is-dark">-->
-                            <!--                  <span class="icon">-->
-                            <!--                      <i class="fab fa-youtube"></i>-->
-                            <!--                  </span>-->
-                            <!--                  <span>Video</span>-->
-                            <!--                </a>-->
-                            <!--              </span>-->
+                            <span class="link-block">
+                            <a href="video-link#"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-youtube"></i>
+                                </span>
+                                <span>video</span>
+                                </a>
+                            </span>
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                            <a href="pdf-link#"
+                                class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="fa fa-file-pdf-o"></i>
+                                </span>
+                                <span>pdf</span>
+                            </a>
+                            </span>
                             <!-- Code Link. -->
                             <span class="link-block">
                                 <a href="index.html#"
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
-                                        <i class="fab fa-github"></i>
+                                        <i class="fa fa-github"></i>
                                     </span>
                                     <span>Code (Comming Soon)</span>
                                 </a>
                             </span>
                             <!-- Huggingface Link. -->
                             <!-- <span class="link-block">
-                              <a href=""
-                                 class="external-link button is-normal is-rounded is-dark">
-                                <span class="icon">&#129303</span>
-                                <span>Demo (Comming Soon)</span>
-                              </a>
-                            </span> -->
+      <a href=""
+         class="external-link button is-normal is-rounded is-dark">
+        <span class="icon">&#129303</span>
+        <span>Demo (Comming Soon)</span>
+      </a>
+    </span> -->
                         </div>
 
                     </div>
@@ -244,12 +254,12 @@
                     <figcaption>Figure: Pipeline.</figcaption>
                     <div class="content has-text-justified">
                         <p>
-                            Given a set of images \(\mathcal{I}=\{I_{i}\}_{i=1}^{M}\), the extrinsic matrix for each image \(I_{i}\) and the intrinsic matrix are denoted by \(T_{cw,i}\) and \(K\), respectively. Our method aims to simultaneously obtain both camera intrinsics and extrinsics, as well as a 3DGS model, as demonstrated in <a href="fig-pipline">figure</a>.
+                            Given a set of images \(\mathcal{I}=\{I_{i}\}_{i=1}^{M}\), the extrinsic matrix for each image \(I_{i}\) and the intrinsic matrix are denoted by \(T_{cw,i}\) and \(K\), respectively. Our method aims to simultaneously obtain both camera intrinsics and extrinsics, as well as a 3DGS model, as demonstrated in figure.
                             Due to the incorporation of additional variables, i.e., camera parameters, we enhance the original 3DGS with several key designs.
                         </p>
                         <p>
                             Our key approach is to leverage the global track constraint to explicitly capture and enforce multi-view geometric consistency, which serves as the foundation for accurately estimating both the 3DGS model and the camera parameters.
-                            During initialization, we construct Maximum Spanning Tree (Sec.~\ref{subsec:init}) based on 2D matched feature points and extract global tracks.
+                            During initialization, we construct Maximum Spanning Tree based on 2D matched feature points and extract global tracks.
                             Then we initialize both the camera parameters and subsequent 3D Gaussians with the estimated 3D track points.
                             Building on this, we propose an effective joint optimization method with three loss terms: 2D track loss, 3D track loss, and scale loss.
                             The 2D and 3D track losses are minimized to ensure multi-view geometric consistency.
@@ -267,17 +277,17 @@
     <br>
     <br>
 
-    <section class="hero teaser">
-        <div class="container is-max-desktop">
+    <!--<section class="hero teaser">
+        <div class="container is-max-desktop">-->
             <!--Overview Video-->
-            <div class="columns is-centered has-text-centered">
+            <!--<div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Video</h2>
                     <iframe src="video-link#"></iframe>
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <br>
     <br>
@@ -312,10 +322,10 @@
                     </div>
                     <div class="content has-text-justified">
                         <p>
-                            <a href="fig-table-cf3dgs">Table</a> shows the quantitative comparisons of novel view synthesis and pose accuracy of our method with baselines.
+                            Table shows the quantitative comparisons of novel view synthesis and pose accuracy of our method with baselines(<a href="https://github.com/jibo27/3dgs_hierarchical_training">HT-3DGS</a>,<a href="https://github.com/NVlabs/CF-3DGS">CF-3DGS</a>).
                         </p>
                     </div>
-                    <a name="fig-table-cf3dgs"> <img src="static/images/table-cf3dgs.png" /> </a>
+                    <a name="fig-table-cf3dgs"> <img src="static/images/table-tt-co3d.png" /> </a>
                     <figcaption>Figure: Quantitative comparisons of novel view synthesis and pose accuracy on T&T and CO3D V2.</figcaption>
                 </div>
             </div>
@@ -335,7 +345,7 @@
                         <p>
                             We also create a \( Synthetic Dataset \) with 4 scenes to test our method's ability on camera intrinsic and extrinsic.
                             The novel view synthesis results and corresponding depth maps are shown below.
-                            <a href="fig-table-syn">Table</a> hows the estimation errors from CF-3DGS, COLMAP, and our approach.
+                            Table hows the estimation errors from CF-3DGS, COLMAP, and our approach.
                         </p>
                     </div>
                     <div class="columns is-centered has-text-centered">
@@ -364,24 +374,28 @@
                             </div>
                         </div>
                     </div>
-                    <a name="fig-table-syn"> <img src="static/images/synthetic-table.png" /> </a>
-                    <figcaption>Figure: Quantitative comparisons of parameter accuracy on our Synthetic dataset.</figcaption>
+                    <a name="fig-table-syn"> <img src="static/images/table-syn-psnr.png" width="500"> </a>
+                    <figcaption>Figure: Quantitative comparisons of NVS on our Synthetic dataset.</figcaption>
+                    <a name="fig-table-syn-pose"> <img src="static/images/table-syn-pose.png" > </a>
+                    <figcaption>Figure: Quantitative comparisons of camera parameter accuracy on our Synthetic dataset.</figcaption>
                 </div>
             </div>
         </div>
     </section>
 
-    <!--<section class="section" id="BibTeX">
+    <section class="section" id="BibTeX">
             <div class="container is-max-desktop content">
                 <h2 class="title">BibTeX</h2>
-                <pre><code>@InProceedings{lin2024posemap,
-        author = {Jingyu Lin, Jiaqi Gu, Bojian Wu, Lubin Fan, Renjie Chen, Ligang Liu, Jieping Ye},
-        title = {Learning Neural Volumetric Pose Features for Camera Localization},
-        booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},
-        year = {2024}
-    }</code></pre>
+                <pre><code>
+                    @InProceedings{xxx,
+                    author = {Dongbo Shi,Shen Cao,Lubin Fan,Bojian Wu,Jinhui Guo,Renjie Chen,Ligang Liu,Jieping Ye},
+                    title = {TrackGS: Optimizing COLMAP-Free 3D Gaussian Splatting with Global Track Constraints},
+                    booktitle = {xxx},
+                    year = {2025}
+                    }
+                </code></pre>
             </div>
-        </section>-->
+    </section>
 
 
 
