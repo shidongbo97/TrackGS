@@ -46,13 +46,13 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         .scroll-container {
-            white-space: nowrap; /* 确保子元素不会换行 */
-            overflow-x: scroll; /* 允许水平方向上的滚动 */
-            overflow-y: hidden; /* 隐藏垂直方向上的滚动条 */
+            white-space: nowrap;
+            overflow-x: scroll;
+            overflow-y: hidden;
         }
 
         .scroll-item {
-            display: inline-block; /* 将子元素设置为行内块级元素 */
+            display: inline-block;
         }
     </style>
     <style>
@@ -69,6 +69,12 @@
         }
     </style>
 
+    <style>
+        .comment {
+            font-style: italic;
+            color: gray;
+        }
+    </style>
 </head>
 <body>
 
@@ -83,7 +89,7 @@
                         </div>
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">Dongbo Shi</a><sup>1&dagger;</sup>,&nbsp&nbsp&nbsp</span>
-                            <span class="author-block">Shen Cao</a><sup>2&dagger;</sup>,&nbsp&nbsp&nbsp</span>
+                            <span class="author-block">Shen Cao<a href="https://chaos982.github.io/"></a><sup>2&dagger;</sup>,&nbsp&nbsp&nbsp</span>
                             <span class="author-block"><a href="https://lubinfan.github.io/">Lubin Fan</a><sup>2&ddagger;</sup>,&nbsp&nbsp&nbsp</span>
                             <span class="author-block"><a href="https://scholar.google.com.eg/citations?user=pdx6Lg8AAAAJ">Bojian Wu</a><sup>2</sup>,&nbsp&nbsp&nbsp</span>
                             <span class="author-block">Jinhui Guo</a><sup>2&dagger;</sup>,&nbsp&nbsp&nbsp</span>
@@ -119,7 +125,7 @@
                             <!--                </a>-->
                             <!--              </span>-->
                             <span class="link-block">
-                                <a href="arxiv-link#"
+                                <a href="https://arxiv.org/abs/2502.19800"
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="ai ai-arxiv"></i>
@@ -148,7 +154,7 @@
                             </span>
                             <!-- PDF Link. -->
                             <span class="link-block">
-                            <a href="pdf-link#"
+                            <a href="https://arxiv.org/pdf/2502.19800v2"
                                 class="external-link button is-normal is-rounded is-dark">
                                 <span class="icon">
                                     <i class="fa fa-file-pdf-o"></i>
@@ -387,15 +393,26 @@
             <div class="container is-max-desktop content">
                 <h2 class="title">BibTeX</h2>
                 <pre><code>
-                    @InProceedings{xxx,
-                    author = {Dongbo Shi,Shen Cao,Lubin Fan,Bojian Wu,Jinhui Guo,Renjie Chen,Ligang Liu,Jieping Ye},
-                    title = {TrackGS: Optimizing COLMAP-Free 3D Gaussian Splatting with Global Track Constraints},
-                    booktitle = {xxx},
-                    year = {2025}
+                    @misc{shi2025trackgsoptimizingcolmapfree3d,
+                        title={TrackGS: Optimizing COLMAP-Free 3D Gaussian Splatting with Global Track Constraints}, 
+                        author={Dongbo Shi and Shen Cao and Lubin Fan and Bojian Wu and Jinhui Guo and Renjie Chen and Ligang Liu and Jieping Ye},
+                        year={2025},
+                        eprint={2502.19800},
+                        archivePrefix={arXiv},
                     }
                 </code></pre>
             </div>
     </section>
+
+    <section class="section">
+        <div class="container is-max-desktop content">
+            <!-- <h2 class="title">Note</h2> -->
+            <div class="comment">
+                This work is an updated version of <a href="https://arxiv.org/abs/2502.19800v1">arXiv:2502.19800</a>.
+            </div>
+        </div>
+    </section>
+    
 
 
 
