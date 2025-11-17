@@ -256,7 +256,7 @@
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
                     <h2 class="title is-3">Method</h2>
-                    <a name="fig-pipline"> <img src="static/images/overview-v7.png" /> </a>
+                    <a name="fig-pipline"> <img src="static/images/figure_overview_v4.png" /> </a>
                     <figcaption>Figure: Pipeline.</figcaption>
                     <div class="content has-text-justified">
                         <p>
@@ -267,9 +267,7 @@
                             Our key approach is to leverage the global track constraint to explicitly capture and enforce multi-view geometric consistency, which serves as the foundation for accurately estimating both the 3DGS model and the camera parameters.
                             During initialization, we construct Maximum Spanning Tree based on 2D matched feature points and extract global tracks.
                             Then we initialize both the camera parameters and subsequent 3D Gaussians with the estimated 3D track points.
-                            Building on this, we propose an effective joint optimization method with three loss terms: 2D track loss, 3D track loss, and scale loss.
-                            The 2D and 3D track losses are minimized to ensure multi-view geometric consistency.
-                            The scale loss constrains the track Gaussians remain aligned with the scene's surface while preserving the expressive capability of the 3DGS model.
+                            Building on this, we propose an effective joint optimization method with two loss terms: 2D track loss and 3D track loss, which are minimized to ensure multi-view geometric consistency.
                             We derive and implement the differentiable components of the camera parameters, including both the extrinsic and intrinsic matrices.
                             This allows us to apply the chain rule, enabling seamless joint optimization of the 3DGS model and the camera parameters.
                         </p>
@@ -331,7 +329,7 @@
                             Table shows the quantitative comparisons of novel view synthesis and pose accuracy of our method with baselines(<a href="https://github.com/jibo27/3dgs_hierarchical_training">HT-3DGS</a>,<a href="https://github.com/NVlabs/CF-3DGS">CF-3DGS</a>).
                         </p>
                     </div>
-                    <a name="fig-table-cf3dgs"> <img src="static/images/table-tt-co3d.PNG" /> </a>
+                    <a name="fig-table-cf3dgs"> <img src="static/images/table-tt-co3d-v2.png" /> </a>
                     <figcaption>Figure: Quantitative comparisons of novel view synthesis and pose accuracy on T&T and CO3D V2.</figcaption>
                 </div>
             </div>
@@ -380,9 +378,9 @@
                             </div>
                         </div>
                     </div>
-                    <a name="fig-table-syn"> <img src="static/images/table-syn-psnr.PNG" width="500"> </a>
+                    <a name="fig-table-syn"> <img src="static/images/table-syn-psnr-v2.PNG" width="500"> </a>
                     <figcaption>Figure: Quantitative comparisons of NVS on our Synthetic dataset.</figcaption>
-                    <a name="fig-table-syn-pose"> <img src="static/images/table-syn-pose.PNG" > </a>
+                    <a name="fig-table-syn-pose"> <img src="static/images/table-syn-pose-v2.PNG" > </a>
                     <figcaption>Figure: Quantitative comparisons of camera parameter accuracy on our Synthetic dataset.</figcaption>
                 </div>
             </div>
